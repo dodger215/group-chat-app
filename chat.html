@@ -30,11 +30,15 @@
   </div>
 
   <script>
-    const apiUrl = "https://chatting-app-api-4.onrender.com";
+    const apiUrl = "https://chatting-app-api-6.onrender.com";
     const token = localStorage.getItem("access_token");
-    const chatUserId = localStorage.getItem("chat_user_id");
-    const chatUsername = localStorage.getItem("chat_username");
+    
+    function getChatProperty(primaryKey, fallbackKey) {
+        return localStorage.getItem(primaryKey) || localStorage.getItem(fallbackKey);
+    }
 
+const chatUserId = getChatProperty("chat_user_id", "chat_group_id");
+const chatUsername = getChatProperty("chat_username", "chat_group_name");
 
 
     if (!token || !chatUserId || !chatUsername) {

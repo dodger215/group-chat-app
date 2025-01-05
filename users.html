@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   
-    const apiUrl = "https://chatting-app-api-4.onrender.com";
+    const apiUrl = "https://chatting-app-api-6.onrender.com";
     const token = localStorage.getItem("access_token");
     const main = localStorage.getItem("username");
 
@@ -261,6 +261,12 @@ document.getElementById("createGroupBtn").addEventListener("click", async () => 
   const groupName = document.getElementById("groupName").value;
   const checkboxes = document.querySelectorAll("#groupUserList input:checked");
   selectedUsers = Array.from(checkboxes).map(cb => parseInt(cb.value));
+
+  // Ensure the creator is added to the selected users
+  const creatorId = parseInt(localStorage.getItem("user_id")); // Assuming "user_id" holds the creator's ID
+  if (!selectedUsers.includes(creatorId)) {
+    selectedUsers.push(creatorId);
+  }
 
   try {
     const response = await fetch(`${apiUrl}/groups`, {

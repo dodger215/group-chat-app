@@ -229,11 +229,18 @@
       const username = document.getElementById("signUpUsername").value;
       const email = document.getElementById("signUpEmail").value;
       const password = document.getElementById("signUpPassword").value;
+      const passwordCon = document.getElementById("signUpConfirmPassword").value;
+
 
       const loadingIndicator = document.getElementById("loading");
 
-      if (!fullName || !username || !email || !password) {
+      if (!fullName || !username || !email || !password || !passwordCon) {
         responseMessage.textContent = "All fields are required!";
+        responseModal.show();
+        return;
+      }
+      if (password != passwordCon){
+        responseMessage.textContent = "Password don't match";
         responseModal.show();
         return;
       }

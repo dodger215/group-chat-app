@@ -239,8 +239,9 @@
         responseModal.show();
         return;
       }
-      if (password != passwordCon){
-        responseMessage.textContent = "Password don't match";
+      if (password !== passwordCon) {
+        responseMessage.textContent = "Passwords don't match";
+        const responseModal = new bootstrap.Modal(document.getElementById('responseModal'));
         responseModal.show();
         return;
       }
